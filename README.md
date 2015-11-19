@@ -9,3 +9,10 @@ pro vygenerování použít např.:
     --place "Olomouci" \
     --date-signed "11. listopadu 2014" --output-file pokus1.tex
     (cd certificates/ && pdflatex pokus1.tex && xpdf pokus1.pdf)
+
+ve for smyčce:
+
+    IFS=$'\n'       # make newlines the only separator
+    for i in `cat /tmp/ucastnici.txt`; do
+        python3 generate-certificates.py --template .... ;
+    done
