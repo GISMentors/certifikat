@@ -4,7 +4,7 @@ Certifikáty GISMentors
 
 pro vygenerování použít např.:
 
-    python3 generate-certificate.py --template templates/grass-zacatecnik.tex \
+    python3 generate_certificate.py --template templates/grass-zacatecnik.tex \
     --name "Ing. Pepa Popovič" --date "10. -- 11. listopadu 2014" \
     --place "Olomouci" \
     --date-signed "11. listopadu 2014" --output-file pokus1.tex
@@ -14,7 +14,7 @@ ve for smyčce:
 
     IFS=$'\n'       # make newlines the only separator
     for i in `cat /tmp/ucastnici.txt`; do
-        python3 generate-certificates.py --template .... ;
+        python3 generate_certificates.py --template .... ;
     done
 
 Další možností je generovat certifikáty přímo z CSV souboru:
