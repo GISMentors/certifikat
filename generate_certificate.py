@@ -25,7 +25,7 @@ def generate(templatefile, name, date, date_signed, output_file, place):
 
 def main():
     parser = argparse.ArgumentParser(description='Generate certificate')
-    parser.add_argument('--template', required=True, help='Soubor .tex se šablonou')
+    parser.add_argument('--template', required=True, help='Soubor .tex s šablonou')
     parser.add_argument('--name', required=True, help='Jméno účastníka')
     parser.add_argument('--date', required=True, help='Datum konání (použijte zápis pro LaTeX')
     parser.add_argument('--place', required=True, help='Místo konání')
