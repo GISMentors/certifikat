@@ -2,3 +2,4 @@ certificates/*
 .*.sw*
 __pycache__
 *.csv
+*~
