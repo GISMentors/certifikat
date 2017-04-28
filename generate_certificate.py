@@ -13,6 +13,10 @@ def generate(templatefile, name, date, date_signed, output_file, place):
     template_content = re.sub(r'\[name\]', name, template_content)
     template_content = re.sub(r'\[date\]', date, template_content)
     template_content = re.sub(r'\[date-signed\]', date_signed, template_content)
+    a = ''
+    if name.endswith('ová'):
+        a = 'a'
+    template_content = re.sub(r'\[a\]', a, template_content)
 
     output_file = os.path.join('certificates', output_file)
     if not os.path.exists('certificates'):
