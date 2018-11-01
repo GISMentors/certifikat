@@ -16,17 +16,9 @@ def generate_from_csv(csvfile, templatefile, date, place):
     try:
         with open(csvfile) as fd:
             csvreader = csv.reader(fd, delimiter=',', quotechar='"')
-            next(fd) # skip first line
+            next(fd) # skip first (header) line
             for row in csvreader:
-                name=''
-                if len(row[1]) > 1:
-                    if ' ' in row[1]:
-                        d1, d2 = row[1].split(' ', 1)
-                        name='{d1} {f} {l}, {d2}'.format(d1=d1, d2=d2, f=row[2].strip(), l=row[3].strip())
-                    else:
-                        name='{d} {f} {l}'.format(d=row[1], f=row[2].strip(), l=row[3].strip())
-                else:
-                    name='{f} {l}'.format(f=row[2].strip(), l=row[3].strip())
+                name=row[0].strip()
 
                 output_file = '{}.tex'.format(name)
                 generate(templatefile, name, date, date, output_file, place)
