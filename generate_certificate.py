@@ -14,7 +14,7 @@ def generate(templatefile, name, date, date_signed, output_file, place):
     template_content = re.sub(r'\[date\]', date, template_content)
     template_content = re.sub(r'\[date-signed\]', date_signed, template_content)
     a = ''
-    if name.endswith('ová') or name.endswith('ská'):
+    if name.endswith('á'):
         a = 'a'
     template_content = re.sub(r'\[a\]', a, template_content)
 
