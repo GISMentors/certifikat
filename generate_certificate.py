@@ -18,9 +18,6 @@ def generate(templatefile, name, date, date_signed, output_file, place):
         a = 'a'
     template_content = re.sub(r'\[a\]', a, template_content)
 
-    output_file = os.path.join('certificates', output_file)
-    if not os.path.exists('certificates'):
-        os.mkdir('certificates')
     outputfile = open(output_file, 'w')
     outputfile.write(template_content)
     outputfile.close()
