@@ -25,7 +25,7 @@ def generate(templatefile, name, date, date_signed, output_file, place):
     outputfile.write(template_content)
     outputfile.close()
 
-    print("Output written to %s" % (output_file))
+    return outputfile
 
 def main():
     parser = argparse.ArgumentParser(description='Generate certificate')
@@ -37,7 +37,8 @@ def main():
     parser.add_argument('--output-file', required=True, help='Jméno výstupního .tex souboru (bude uloženo do adresáře "certificates")')
 
     args = parser.parse_args()
-    generate(args.template, args.name, args.date, args.date_signed, args.output_file, args.place)
+    out = generate(args.template, args.name, args.date, args.date_signed, args.output_file, args.place)
+    print("Output written to %s" % (out))
 
 if __name__ == '__main__':
     main()
