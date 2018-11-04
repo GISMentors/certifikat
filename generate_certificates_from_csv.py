@@ -11,7 +11,7 @@ import shutil
 
 from generate_certificate import generate
 
-def generate_from_csv(csvfile, templatefile, date, place):
+def generate_from_csv(csvfile, templatefile, date, place, logo):
     """Generate output .tex file based on given CSV data and template
     """
     try:
@@ -22,9 +22,7 @@ def generate_from_csv(csvfile, templatefile, date, place):
                 name=row[0].strip()
 
                 output_file = '{}.tex'.format(name)
-                generate(os.path.join('..', templatefile), name, date, date,
-                         output_file,
-                         place)
+                generate(templatefile, name, date, date, output_file, place, logo)
 
     except Exception as e:
         sys.exit(e)
@@ -54,6 +52,7 @@ def main():
     parser.add_argument('--template', required=True, help='Soubor .tex s šablonou')
     parser.add_argument('--date', required=True, help='Datum konání (použijte zápis pro LaTeX')
     parser.add_argument('--place', help='Místo konání', default='Praze')
+    parser.add_argument('--logo', required=True, help='Plná cesta k logo souboru s kurzem')
 
     args = parser.parse_args()
 
@@ -63,7 +62,7 @@ def main():
     os.makedirs(output_dir)
     os.chdir(output_dir)
 
-    generate_from_csv(args.csv, args.template, args.date, args.place)
+    generate_from_csv(args.csv, args.template, args.date, args.place, args.logo)
     generate_pdf()
         
 if __name__ == '__main__':

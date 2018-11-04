@@ -4,7 +4,7 @@ import argparse
 import re
 import os
 
-def generate(templatefile, name, date, date_signed, output_file, place):
+def generate(templatefile, name, date, date_signed, output_file, place, logo):
     """Generate output .tex file based on given data and template
     """
 
@@ -13,6 +13,7 @@ def generate(templatefile, name, date, date_signed, output_file, place):
     template_content = re.sub(r'\[name\]', name, template_content)
     template_content = re.sub(r'\[date\]', date, template_content)
     template_content = re.sub(r'\[date-signed\]', date_signed, template_content)
+    template_content = re.sub(r'\[logo\]', logo, template_content)
     a = ''
     if name.endswith('á'):
         a = 'a'
