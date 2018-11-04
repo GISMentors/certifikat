@@ -25,7 +25,7 @@ def generate(templatefile, name, date, date_signed, output_file, place):
     outputfile.write(template_content)
     outputfile.close()
 
-    return outputfile
+    return output_file
 
 def main():
     parser = argparse.ArgumentParser(description='Generate certificate')
