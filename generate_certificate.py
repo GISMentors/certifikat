@@ -4,7 +4,8 @@ import argparse
 import re
 import os
 
-def generate(templatefile, name, date, date_signed, output_file, place, logo):
+def generate(templatefile, name, date, date_signed, output_file, place, logo,
+             lectures):
     """Generate output .tex file based on given data and template
     """
 
@@ -18,6 +19,17 @@ def generate(templatefile, name, date, date_signed, output_file, place, logo):
     if name.endswith('á'):
         a = 'a'
     template_content = re.sub(r'\[a\]', a, template_content)
+
+    lector_template = """
+    \\\\vfill
+
+    {lector}\\\\\\
+    """
+    lectors = [lector_template.format(lector=l) for l in lectures]
+    lectors = "\n".join(lectors)
+
+
+    template_content = re.sub(r'\[lectors\]', lectors, template_content)
 
     outputfile = open(output_file, 'w')
     outputfile.write(template_content)
@@ -33,6 +45,8 @@ def main():
     parser.add_argument('--place', required=True, help='Místo konání')
     parser.add_argument('--date-signed', required=True, help='Datum podpisu (použijte zápis pro LaTeX')
     parser.add_argument('--output-file', required=True, help='Jméno výstupního .tex souboru (bude uloženo do adresáře "certificates")')
+    parser.add_argument('--lectors', required=True, nargs="+",
+                        help='Jména lektorů')
 
     args = parser.parse_args()
     out = generate(args.template, args.name, args.date, args.date_signed, args.output_file, args.place)
