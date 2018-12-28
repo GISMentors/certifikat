@@ -25,7 +25,7 @@ def generate_from_csv(csvfile, target, templatefile, date, place, logo,
                 name = row[0].strip()
 
                 output_file = str(pathlib.Path(target, '{}.tex'.format(name)))
-                generate(templatefile, name, date, date, output_file, place,
+                generate(templatefile, name, date, output_file, place,
                          logo_file, lectors)
 
         logo_dst = str(pathlib.Path(target, pathlib.Path(logo).name))
