@@ -4,11 +4,11 @@ Certifikáty GISMentors
 
 pro vygenerování použít např.:
 
-    python3 generate_certificate.py --template templates/grass-zacatecnik.tex \
-    --logo "images/qgislogo_vector.eps",
+    python3 generate_certificate.py --template templates/grass-gis-zacatecnik.tex \
+    --logo "images/grasslogo_vector.eps" \
     --name "Ing. Pepa Popovič" --date "10. -- 11. listopadu 2014" \
     --place "Olomouci" \
-    --date-signed "11. listopadu 2014" --output-file pokus1.tex
+    --lectors "Ing. Jachym Čepický" "Ing. Martin Landa, PhD."  --output-file pokus1.tex
     (cd certificates/ && pdflatex pokus1.tex && xpdf pokus1.pdf)
 
 ve for smyčce:
